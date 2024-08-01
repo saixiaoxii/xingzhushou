@@ -1,0 +1,26 @@
+server:
+  port: 2333
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://115.159.34.165:3306/xingzhushou
+    username: test
+    password: wuhu527608
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  task:
+    execution:
+      pool:
+        core-size: 10
+        max-size: 20
+        queue-capacity: 1000
+
+      thread-name-prefix: user-thread-pool-
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true

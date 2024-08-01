@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.messagehub.mapper.MessageMapper">
+
+    <resultMap id="BaseResultMap" type="com.demo.messagehub.entity.Message">
+            <id property="msgId" column="msg_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="topicId" column="topic_id" jdbcType="INTEGER"/>
+            <result property="isUser" column="is_user" jdbcType="TINYINT"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        msg_id,user_id,topic_id,
+        is_user,content,create_time
+    </sql>
+    <insert id="insertMessage" parameterType="com.demo.messagehub.entity.Message">
+        INSERT INTO message (user_id, topic_id, is_user, content, create_time)
+        VALUES (#{userId}, #{topicId}, #{isUser}, #{content}, #{createTime})
+    </insert>
+</mapper>

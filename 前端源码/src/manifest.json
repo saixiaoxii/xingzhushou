@@ -1,0 +1,54 @@
+{
+    "manifest_version": 3,
+    "name": "星助手",
+    "version": "0.0.1",
+    "description": "Chrome 插件",
+    "icons": {
+      "16": "icons/xing.png",
+      "19": "icons/xing.png",
+      "38": "icons/xing.png",
+      "48": "icons/xing.png",
+      "128": "icons/xing.png"
+    },
+    "action": {
+      "default_title": "星助手",
+      "default_icon": "icons/xing.png",
+      "default_popup": ""
+    },
+    "background": {
+      "service_worker": "background/service-worker.js",
+      "type": "module"
+    },
+    "permissions": [
+      "storage",
+      "activeTab",
+      "contentSettings",
+      "audioCapture",
+      "webNavigation"
+    ],
+    "host_permissions": ["http://115.159.34.165/*","https://u256491-a3cd-b9be5733.westb.seetacloud.com/*","https://u256491-b15a-08707041.westb.seetacloud.com:8443/*"],
+    "content_scripts": [
+      {
+        "js": [
+          "content/content.js"
+        ],
+        "matches": ["http://fanya.chaoxing.com/*",
+                    "https://fanya.chaoxing.com/*",
+                    "http://mooc1.chaoxing.com/*",
+                    "https://mooc1.chaoxing.com/*"],
+        "all_frames": true,
+        "run_at": "document_end",
+        "match_about_blank": true
+      }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": ["popup/*", "contentPage/*", "assets/*", "js/*"],
+          "matches": ["http://fanya.chaoxing.com/*",
+                      "https://fanya.chaoxing.com/*",
+                      "http://mooc1.chaoxing.com/*",
+                      "https://mooc1.chaoxing.com/*"],
+          "use_dynamic_url": true
+        }
+      ]
+  }
